@@ -41,9 +41,39 @@ def intToStr(int):
 
     return newStr
 
+def delta(currentState, newChar):
+# This function returns the integer of the state that currentState will go to when newChar is added to it
+
+    stateString = currentState
+    if len(stateString) <= 4:   # if length is less than equal to 4, cat newChar and return string
+        stateString += newChar
+        return strToInt(stateString)
+
+    stateString += newChar     # if length is 5, check if a,b,c,d are all present in string
+    isa = isb = isc = isd = False
+    for char in stateString:
+        if char == 'a':
+            isa = True
+        elif char == 'b':
+            isb = True
+        elif char == 'c':
+            isc = True
+        elif char == 'd':
+            isd = True
+    if isa and isb and isc and isd:     # if all chars are present in string
+        stateString = stateString[1:]   # removes first char of string
+        return strToInt(stateString)
+
+    else:   # if any char is missing at this point, it goes to reject state (aaaaaa == 1365)
+        return 1365
+        # I'm not 100% that that's what we should be returning, though
+
+
 def main():
 
     print(strToInt("dcbad"))
-    print(intToStr(1136))
+    print(intToStr(1365))
+    print(delta("a", "c"))
+    print(delta("adcba", "d"))
 
 main()
