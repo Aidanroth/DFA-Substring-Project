@@ -71,9 +71,21 @@ def delta(currentState, newChar):
 
 def main():
 
-    print(strToInt("dcbad"))
-    print(intToStr(1365))
-    print(delta("a", "c"))
+    print(strToInt("adcba"))
+    print(intToStr(1))
+    print(delta("adcba", "b"))
     print(delta("adcba", "d"))
+
+    # The array created below holds the values for where each state will go if each possible letter is added to it
+    # for example, arr[0][2] shows where state 0 will go if c is added to it. arr[449][1] will show adcba + b
+    rows, cols = (1365, 4)
+    arr = [[0 for i in range(cols)] for j in range(rows)]
+    for i in range(rows):
+        for j in range(cols):
+            arr[i][j] = delta(intToStr(i), intToStr(j+1))
+    print(arr)
+
+    print(arr[449][:])
+    print(arr[449][2])
 
 main()
