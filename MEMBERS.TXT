@@ -1,0 +1,7 @@
+Aidan Roth and Christopher Roseberry
+
+Problem 1: Aidan Roth wrote the functions to convert strings to integers, integers to strings, and to compute the
+    deltas of the states and inputs. Aidan Roth and Christopher Roseberry worked together on the function to compute
+    the number of strings of length n.
+
+Problem 2: Aidan wrote the MinString function that attempts to implement breadth-first-search.
